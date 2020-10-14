@@ -15,7 +15,9 @@ async function getQuote() {
       throw Error(response.statusText)
     }
     const json = await response.json();
-    displayQuote(json.content + " - " + json.author);
+    displayQuote(json.content);
+    const author = document.querySelector('.author');
+    author.textContent = '- ' + json.author;
     setTweetButton(json.content, json.author);
   } catch(err) {
     console.log(err);
